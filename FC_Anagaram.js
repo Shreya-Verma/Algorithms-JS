@@ -7,7 +7,8 @@
 let str1 = "Rat";
 let str2 = "Tar";
 
-function validAnagarm(str1, str2){
+// Frequency counter Pattern .
+function validAnagarm1(str1, str2){
     // additional checks for  empty strings.
     // first check the length of the string
     if(str1.length !== str2.length){
@@ -48,4 +49,45 @@ function validAnagarm(str1, str2){
 }
 
 
-console.log(validAnagarm(str1,str2));
+
+
+// ---------> ALTERNATE Solution : Lookup Object
+
+
+function validAnagarm2(str1, str2){
+    // additional checks for  empty strings.
+    // first check the length of the string
+    if(str1.length !== str2.length){
+        return false;
+    }
+
+    let lookup = {};
+   
+    // if the strings are not in lower case,make it in lower case.
+    // find out the occurances of individual character in the word
+    // create a lookup
+    for (let v of str1.toLowerCase()){
+        lookup[v] = (lookup[v] || 0) + 1;
+    }
+
+    // compare 
+    // 1. loop over string 2.
+    // 2. get the invidual char and lower case.
+    // 3. compare the char from string two in look up 
+    // 4. subtract one from lookup when string 2 char matches the lookup.
+    for (let i =0; i<str2.length; i++){
+       let char = str2[i].toLowerCase();
+       if(!(lookup[char])){
+           return false;
+       }else{
+           lookup[char] = lookup[char] - 1;
+       }
+    }
+    return true;
+
+}
+
+
+
+
+console.log(validAnagarm2(str1,str2));
