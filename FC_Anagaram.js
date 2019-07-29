@@ -1,6 +1,6 @@
 // check if two strings are Anagrams.
 // Assumptions: 
-    // Lover case simple words with no special character or space.
+    // Lower case simple words with no special character or space.
 
 // SOLUTION :
 
