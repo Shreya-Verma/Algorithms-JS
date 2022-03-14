@@ -17,21 +17,17 @@ const non_repeat_substring = function (str) {
   let charIndexMap = {};
   let maxLength = 0;
   let windowStart = 0;
-  console.log(str);
+
   for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
     let rightChar = str[windowEnd];
     // if the map already contains the 'rightChar', shrink the window from the beginning so that
     // we have only one occurrence of 'rightChar'
-    console.log(rightChar);
-    console.log("Before charIndexMap", charIndexMap);
 
     if (rightChar in charIndexMap) {
-      console.log("windowStart Before", windowStart);
       windowStart = Math.max(windowStart, charIndexMap[rightChar] + 1);
     }
     charIndexMap[rightChar] = windowEnd;
-    console.log("Afetr charIndexMap", charIndexMap);
-    console.log("windowStart windowEnd", windowStart, windowEnd);
+
     maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
   }
   return maxLength;
