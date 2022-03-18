@@ -11,3 +11,5 @@
             1  4  7 
  *
  */
+
+const rotate_array_anticlock = function (arr) {};
