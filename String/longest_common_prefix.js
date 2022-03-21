@@ -24,7 +24,7 @@ const longestCommonPrefix = function (strs) {
     longestPrefix += char;
   }
 
-  return prefix;
+  return longestPrefix;
 };
 
 console.log(longestCommonPrefix(["flower", "flow", "flight"]));
