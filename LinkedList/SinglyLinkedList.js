@@ -1,4 +1,9 @@
-import Node from "./Node.js";
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
 
 export default class SinglyLinkedList {
   constructor() {
@@ -118,42 +123,24 @@ export default class SinglyLinkedList {
     return removed;
   }
 
-  reverse() {
-    if (!this.head) return null;
-    if (this.length == 1) return this.head;
-
-    //swap head and tail pointers if tail pointer is present;
-    /// else if list contains only head then set head to prev node after loop completes
-    let current = this.head;
-    this.head = this.tail;
-    this.tail = current;
-
-    let next;
-    let prev = null;
-    for (let i = 0; i < this.length; i++) {
-      next = current.next; // store next of current node
-      current.next = prev; // change next of current node to prev
-      // move prev and current one step forward;
-      prev = current; // previous is now current
-      current = next; // current is now next
-    }
-
-    //DO the below step if the tail pointer is not present;
-    // this.head = prev;
-
-    return this;
-  }
-
   size() {
     return this.length;
   }
 
   // isEmpty checks if list is empty or not
   isEmpty() {
-    return this.head === null || this.tail === null;
+    return this.head === null && this.tail === null;
   }
 
-  print() {
+  getHead() {
+    return this.head;
+  }
+
+  getTail() {
+    return this.tail;
+  }
+
+  toString() {
     let str = "";
     if (this.isEmpty()) {
       return null;
@@ -165,5 +152,21 @@ export default class SinglyLinkedList {
       }
     }
     return str + "null";
+  }
+
+  [Symbol.iterator]() {
+    let counter = 0;
+    let nextIndex = this.head;
+    return {
+      next: () => {
+        while (nextIndex !== null) {
+          let result = { value: nextIndex.data, done: false };
+          nextIndex = nextIndex.next;
+          counter++;
+          return result;
+        }
+        return { value: counter, done: true };
+      },
+    };
   }
 }
