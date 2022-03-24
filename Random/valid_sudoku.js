@@ -10,91 +10,32 @@ A valid Sudoku board (partially filled) is not necessarily solvable. Only the fi
  * 
  * 
  */
-function isValidSudoku(board, n) {
-  if (isEmptySudoku(board)) return true;
+function isValidSudoku(board) {
+  if (!board || board.length <= 0) return false;
+  if (board.length == 1 && board[0].length == 1) return true;
+  let size = board.length;
+  const rowSet = new Array(9).fill().map(() => new Set());
+  const colSet = new Array(9).fill().map(() => new Set());
+  const boxSet = new Array(9).fill().map(() => new Set());
 
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j < n; j++) {
-      if (!isValid(board, i, j)) return false;
+  for (let i = 0; i < size; i++) {
+    for (let j = 0; j < size; j++) {
+      let currEl = board[i][j];
+      let boxIndex = Math.floor(i / 3) * 3 + Math.floor(j / 3);
+      if (currEl === ".") continue;
+
+      let a = rowSet[i].has(currEl);
+      let b = colSet[j].has(currEl);
+      let c = boxSet[boxIndex].has(currEl);
+
+      if (a || b || c) return false;
+
+      rowSet[i].add(currEl);
+      colSet[j].add(currEl);
+      boxSet[boxIndex].add(currEl);
     }
   }
   return true;
-}
-
-function isEmptySudoku(board) {
-  let count = 0;
-  board.forEach((row) => {
-    if (row.every((n) => n === ".")) {
-      count += 9;
-    }
-  });
-
-  if (count == 81) return true;
-  return false;
-}
-//check if any duplicates in current row
-function isCurrentRowValid(arr, row) {
-  let rowSet = new Set();
-  let count = 0;
-  for (let i = 0; i < 9; i++) {
-    if (rowSet.has(arr[row][i])) {
-      return false;
-    }
-    if (arr[row][i] !== ".") {
-      rowSet.add(arr[row][i]);
-    } else {
-      count++;
-    }
-  }
-  if (count == 9) return false;
-  return true;
-}
-
-//check if any duplicates in current row
-function isCurrentColumnValid(arr, col) {
-  let colSet = new Set();
-  let count = 0;
-  for (let i = 0; i < 9; i++) {
-    if (colSet.has(arr[col][i])) {
-      return false;
-    }
-    if (arr[col][i] !== ".") {
-      colSet.add(arr[col][i]);
-    } else {
-      count++;
-    }
-  }
-  if (count === 9) return false;
-  return true;
-}
-
-//check if any duplicates in current row
-function isCurrentCubeValid(arr, row, col) {
-  let cubeSet = new Set();
-  let count = 0;
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 3; j++) {
-      let currentVal = arr[i + row][j + col];
-      if (cubeSet.has(currentVal)) {
-        return false;
-      }
-      if (currentVal !== ".") {
-        cubeSet.add(currentVal);
-      } else {
-        count++;
-      }
-    }
-  }
-  if (count === 9) return false;
-  return true;
-}
-
-function isValid(arr, row, col) {
-  return (
-    isCurrentRowValid(arr, row) &&
-    isCurrentColumnValid(arr, col) &&
-    isCurrentCubeValid(arr, row - (row % 3), col - (col % 3))
-  );
 }
 
 let board = [
@@ -108,4 +49,5 @@ let board = [
   [".", ".", ".", "4", "1", "9", ".", ".", "5"],
   [".", ".", ".", ".", "8", ".", ".", "7", "9"],
 ];
-consle.log(isValidSudoku(board, 9));
+
+console.log(isValidSudoku(board));
