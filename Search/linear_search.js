@@ -1,5 +1,12 @@
-let arr = [34, 56, 1, 2];
+/**
+ * WHEN HAVING AN UNSORTED ARRAY
+ * ************************************
+ * Time complexity :
+ * Worst: O(n)
+ * Best : O(1)
+ */
 
+let arr = [34, 56, 1, 2];
 function linear_search(arr, val) {
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === val) {

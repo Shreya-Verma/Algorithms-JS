@@ -1,5 +1,11 @@
-// Write a program to do binary search
-// Works in case of sorted array
+/**
+ * BEST TO USE WHEN HAVE A SORTED ARRAY
+ **********************************
+ * Time complexity :
+ * Worst: O(log n)
+ * Best : O(1)
+ *
+ */
 
 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 function binary_search(arr, elem) {
@@ -11,18 +17,14 @@ function binary_search(arr, elem) {
   let middle = Math.floor((first + last) / 2);
 
   while (arr[middle] !== elem && first <= last) {
-    if (elem < arr[middle]) {
+    if (element < arr[middle]) {
       last = middle - 1;
     } else {
-      first = middle + 1;
+      start = middle + 1;
     }
     middle = Math.floor((first + last) / 2);
   }
-  if (arr[middle] === elem) {
-    return middle;
-  } else {
-    return -1;
-  }
+  return arr[middle] === elem ? middle : -1;
 }
 
 console.log(binary_search(arr, 3));
