@@ -13,8 +13,7 @@ export default class MyMap {
 
     if (it && it.length > 0) {
       for (let [key, value] of it) {
-        this.map.push({ key, value });
-        this.size++;
+        this.set(key, value);
       }
     }
   }
@@ -23,6 +22,9 @@ export default class MyMap {
     if (!this.has(key)) {
       this.map.push({ key, value });
       this.size++;
+    } else {
+      let index = this.getIndex(key);
+      this.map[index].value = value;
     }
   }
 
@@ -67,6 +69,44 @@ export default class MyMap {
       }
     }
     return -1;
+  }
+
+  keys() {
+    let counter = 0;
+    return {
+      next: () => {
+        while (counter < this.size) {
+          let result = {
+            value: this.map[counter].key,
+            done: false,
+          };
+          counter++;
+          return result;
+        }
+        return {
+          done: true,
+        };
+      },
+    };
+  }
+
+  values() {
+    let counter = 0;
+    return {
+      next: () => {
+        while (counter < this.size) {
+          let result = {
+            value: this.map[counter].value,
+            done: false,
+          };
+          counter++;
+          return result;
+        }
+        return {
+          done: true,
+        };
+      },
+    };
   }
 
   entries() {
