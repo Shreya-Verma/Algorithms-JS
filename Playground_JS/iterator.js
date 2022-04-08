@@ -1,37 +1,37 @@
 /**
  * for..in and for..of
  */
-const employee = {
+const employee2 = {
   name: "Pooja",
   company: "Xebia",
   age: 25,
 };
 
-const array = [60, 23, 56, 78, "Shreya", "Ajit", function sayHello() {}, 89];
+const A = [60, 23, 56, 78, "Shreya", "Ajit", function sayHello() {}, 89];
 
-// This will work and return the prop name of the objects  and the index values in a array
-for (let i in employee) {
+// This will work and return the prop name of the objects  and the index values in a A
+for (let i in employee2) {
   console.log(i);
 }
-for (let i in array) {
+for (let i in A) {
   console.log(i);
 }
 
 // for for.. of to work the object needs to have a special property of Symbol.iterator.
-// for (let item of employee) {
+// for (let item of employee2) {
 //   console.log(item);
 // }
-for (let item of array) {
+for (let item of A) {
   console.log(item);
 }
 
 /////////Iterators under the hood
-function createFlow(array) {
+function createFlow(A) {
   let i = 0;
   const inner = {
     next: function () {
-      if (i < array.length) {
-        let element = array[i];
+      if (i < A.length) {
+        let element = A[i];
         i++;
         return { value: element, done: false };
       } else {
@@ -52,7 +52,7 @@ console.log(element.next().value);
 
 /**
  *
- * Create an iterator with a next method that returns an array with two elements
+ * Create an iterator with a next method that returns an A with two elements
  * (where the first element is the index and the second is the value at that index) when .next is called.
  */
 
@@ -70,8 +70,8 @@ function indexIterator(arr) {
 }
 
 // Uncomment the lines below to test your work
-const array5 = ["a", "b", "c", "d"];
-const iteratorWithIndex = indexIterator(array5);
+const A5 = ["a", "b", "c", "d"];
+const iteratorWithIndex = indexIterator(A5);
 console.log(iteratorWithIndex.next()); // -> should log [0, 'a']
 console.log(iteratorWithIndex.next()); // -> should log [1, 'b']
 console.log(iteratorWithIndex.next()); // -> should log [2, 'c']
