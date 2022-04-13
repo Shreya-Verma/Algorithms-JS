@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design Patterns</title>
+  </head>
+  <body>
+    <h1>Javascipt Design Patterns</h1>
+    <h3 id="willChange">Changing header</h3>
+    <ul>
+      <li>
+        Module Pattern
+        <ul>
+          <li>
+            The module pattern allows you to split up your code into smaller,
+            reusable pieces, Also, a way of encapsulating private members while
+            producing a public API
+          </li>
+          <li>
+            This is accomplished by creating an IIFE which allows us to define
+            variables only available in its scope (through closure) while
+            returning an object which contains the public API
+          </li>
+        </ul>
+      </li>
+      <li>
+        Module Reveal Pattern
+        <ul>
+          <li>
+            The key differences are that all members (private and public) are
+            defined within the closure, the return value is an object literal
+            containing no function definitions, and all references to member
+            data are done through direct references rather than through the
+            returned object
+          </li>
+        </ul>
+      </li>
+      <li>ES6 Module Pattern</li>
+      <ul>
+        <li>
+          <button id="testDynamicImport" onclick="">Test Dynamic Import</button>
+        </li>
+        <li>
+          <span id="output"></span>
+        </li>
+      </ul>
+    </ul>
+    <script src="./module_pattern.js"></script>
+    <script type="module" src="./es6-module.js"></script>
+    <script type="module" src="./test.js"></script>
+  </body>
+</html>
