@@ -1,4 +1,4 @@
-export default class Node {
+export default class TNode {
   constructor(char) {
     this.char = char; // Each Character
     this.isEndWord = false; // Marks end of word

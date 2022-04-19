@@ -1,11 +1,4 @@
-class DNode {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
-    this.prev = null;
-  }
-}
-
+import DNode from "./DNode.js";
 export default class DoublyLinkedList {
   constructor() {
     this.head = null;

@@ -1,9 +1,4 @@
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
-  }
-}
+import LNode from "./LNode.js";
 
 export default class SinglyLinkedList {
   constructor() {
@@ -14,7 +9,7 @@ export default class SinglyLinkedList {
 
   // ADD TO TAIL OF LIST
   push(newData) {
-    let newNode = new Node(newData);
+    let newNode = new LNode(newData);
     if (!this.head) {
       this.head = this.tail = newNode;
     } else {
@@ -50,7 +45,7 @@ export default class SinglyLinkedList {
 
   //INSERT AT THE HEAD
   unshift(data) {
-    let newNode = new Node(data);
+    let newNode = new LNode(data);
     if (!this.head) {
       this.head = this.tail = newNode;
       this.length++;
@@ -102,7 +97,7 @@ export default class SinglyLinkedList {
     if (index === this.length) return !!this.push(data);
     if (index === 0) return !!this.unshift(data);
 
-    let newNode = new Node(data);
+    let newNode = new LNode(data);
     let prev = this.get(index - 1);
     let temp = prev.next;
     prev.next = newNode;

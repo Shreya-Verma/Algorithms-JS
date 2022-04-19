@@ -1,9 +1,4 @@
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
-  }
-}
+import QNode from "./QNode.js";
 
 export default class Queue {
   constructor() {
@@ -14,7 +9,7 @@ export default class Queue {
 
   //ADD TO QUEUE
   enqueue(data) {
-    const newNode = new Node(data);
+    const newNode = new QNode(data);
     if (!this.length) {
       this.start = this.end = newNode;
     } else {

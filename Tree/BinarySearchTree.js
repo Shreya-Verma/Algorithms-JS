@@ -1,26 +1,14 @@
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
-  }
-  get isLeaf() {
-    return this.left === null && this.right === null;
-  }
-  get hasChildren() {
-    return !this.isLeaf;
-  }
-}
+import BNode from "./BNode.js";
 
 export default class BinarySearchTree {
   constructor(rootVal) {
-    this.root = rootVal ? new Node(rootVal) : null;
+    this.root = rootVal ? new BNode(rootVal) : null;
   }
 
   //INSERT INTO BINARY TREE
   insert(newVal) {
     if (this.root === null) {
-      this.root = new Node(newVal);
+      this.root = new BNode(newVal);
       return this;
     }
     let current = this.root;
@@ -38,9 +26,9 @@ export default class BinarySearchTree {
       }
     }
     if (newVal < parent.value) {
-      parent.left = new Node(newVal);
+      parent.left = new BNode(newVal);
     } else {
-      parent.right = new Node(newVal);
+      parent.right = new BNode(newVal);
     }
   }
 

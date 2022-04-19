@@ -1,8 +1,8 @@
-import Node from "./Node.js";
+import TNode from "./TNode.js";
 
 export default class Trie {
   constructor() {
-    this.root = new Node(null); // Root Node
+    this.root = new TNode(null); // Root Node
     this.wordCount = 0;
   }
   //Insert a word in the Trie
@@ -15,7 +15,7 @@ export default class Trie {
     for (let chr of word) {
       // if node doesn't have the current character as child, insert it
       if (!current.children[chr]) {
-        current.children[chr] = new Node(chr);
+        current.children[chr] = new TNode(chr);
       }
       // move down, to insert next character
       current = current.children[chr];
