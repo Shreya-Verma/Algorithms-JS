@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+ul{
+    display: flex;
+    padding-left: 0;
+    list-style-type: none;
+}
+li {
+    margin: 5px;
+    cursor: pointer;
+}
+.active{
+    color: gold;
+}
