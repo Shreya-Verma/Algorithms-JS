@@ -15,7 +15,6 @@ function mostVisitedPattern(username, timestamp, website) {
     userVisitMap.get(username[i]).push([website[i], timestamp[i]]);
   }
 
-  console.log(userVisitMap);
   const frequencyMap = new Map();
 
   for (const [username, visits] of userVisitMap) {

@@ -10,7 +10,6 @@ function numberOfIslands(grid) {
   if (!grid.length) return 0;
   let rows = grid.length;
   let cols = grid[0].length;
-  let visited = new Set();
   let islands = 0;
 
   for (let i = 0; i < rows; i++) {
@@ -24,8 +23,6 @@ function numberOfIslands(grid) {
 
   return islands;
 }
-
-function bfs(grid) {}
 
 // Takes a cell in a grid with a “1” , turns it into a “0” and explores (DFS) any of the left, right, up, down 1’s
 function dfs(row, col, grid) {
@@ -42,10 +39,10 @@ function dfs(row, col, grid) {
   // Start by marking current island node with "1" to "0" to mark it as visited
   grid[row][col] = "0";
   // explore 1 to left, right, top , botton
-  dfs(row, col + 1);
-  dfs(row, col - 1);
-  dfs(row + 1, col);
-  dfs(row - 1, col);
+  dfs(row, col + 1, grid);
+  dfs(row, col - 1, grid);
+  dfs(row + 1, col, grid);
+  dfs(row - 1, col, grid);
 }
 
 let grid = [

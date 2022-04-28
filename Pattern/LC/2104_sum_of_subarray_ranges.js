@@ -11,10 +11,10 @@ function findSumOfSubarrayRanges(nums) {
   let n = nums.length;
   let sum = 0;
   let max, min;
-  for (let i = 0; i < n - 1; i++) {
+  for (let i = 0; i < n; i++) {
     max = nums[i];
     min = nums[i];
-    for (let j = i + 1; j < n; j++) {
+    for (let j = i; j < n; j++) {
       max = Math.max(max, nums[j]);
       min = Math.min(min, nums[j]);
       sum += max - min;
@@ -22,3 +22,5 @@ function findSumOfSubarrayRanges(nums) {
   }
   return sum;
 }
+
+console.log(`Sum of sub array ranges ${findSumOfSubarrayRanges([3, 1, 2, 4])}`);
